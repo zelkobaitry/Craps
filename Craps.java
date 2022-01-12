@@ -15,24 +15,45 @@ public class Craps
         Player player = new Player();
         player.setName();
         instructions(player);
-        
+
+        boolean playing = true;
         Die die = new Die();
-        System.out.println("Press <Enter> to roll your first roll..."); // first roll
-        String rolling = in.nextLine();
-        int point = die.rollDie();
-        System.out.println("You rolled a " + die.getRoll() + ("!"));
-        if ((point == 7) || (die.getRoll() == 11))
+        while (playing)
         {
-            // player won
-        }
-        else
-        {
-            // keep playing
-        }
-        
-        
+            System.out.println("Press <Enter> to roll your first roll..."); // first roll
+            String rolling = in.nextLine();
+            int point = die.rollDie();
+            System.out.println("You rolled a " + die.getRoll() + ("!"));
+            if ((point == 7) || (die.getRoll() == 11)) // player won the game
+            {
+                player.gameWon();
+            }
+            else if (point == 2)
+            {
+            
+            }
+            else // keep playing
+            {
+                System.out.println("Press <Enter> to roll your second roll...");
+                rolling = in.nextLine();
+                int roll2 = die.rollDie();
+                while(roll2 != point)
+                {
+                    // keep rolling
+                }
+                player.gameWon();
+            }
+            System.out.println("Would you like to keep playing?");
+            String stillplaying = in.nextLine();
+            if (stillplaying.toLowerCase().equals("n"))
+            {
+                break;
+            }
+        }        
+
         stats(player);
     }
+
     public static void instructions(Player player)
     {
         Scanner in = new Scanner(System.in);
@@ -64,6 +85,7 @@ public class Craps
             }
         }
     }
+
     public static void stats(Player player)
     {
         Scanner in = new Scanner(System.in);
