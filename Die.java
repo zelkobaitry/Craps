@@ -20,7 +20,9 @@ public class Die
      */
     public int rollDie()
     {
-        roll = (int) (Math.random() * 6 + 1);
+        int die1 = (int) (Math.random() * 6 + 1);
+        int die2 = (int) (Math.random() * 6 + 1);
+        roll = die1 + die2;
         return roll;
     }
     

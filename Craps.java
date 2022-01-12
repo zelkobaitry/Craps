@@ -11,22 +11,29 @@ public class Craps
 {
     public static void main(String[] args)
     {
-        String name = getName();
-        instructions(name);
-    }
-    public static String getName()
-    {
         Scanner in = new Scanner(System.in);
-        System.out.print("What is your name? ");
-        String name = in.nextLine();
-        while (name.equals(""))
+        Player player = new Player();
+        player.setName();
+        instructions(player);
+        
+        Die die = new Die();
+        System.out.println("Press <Enter> to roll your first roll..."); // first roll
+        String rolling = in.nextLine();
+        int point = die.rollDie();
+        System.out.println("You rolled a " + die.getRoll() + ("!"));
+        if ((point == 7) || (die.getRoll() == 11))
         {
-            System.out.print("Please enter your name here: ");
-            name = in.nextLine();
+            // player won
         }
-        return name;
+        else
+        {
+            // keep playing
+        }
+        
+        
+        stats(player);
     }
-    public static void instructions(String name)
+    public static void instructions(Player player)
     {
         Scanner in = new Scanner(System.in);
         boolean ready = false;
@@ -34,10 +41,10 @@ public class Craps
         {
             System.out.print("Would you like to see the rules for craps? Y/n: ");
             String instructions = in.nextLine();
-            if (instructions.equals("Y"))
+            if (instructions.toUpperCase().equals("Y"))
             {
                 System.out.println();
-                System.out.println("Well great news, " + name + "! Fortunately for you, the basic rules for playing craps are relatively simple.");
+                System.out.println("Well great news, " + player.getName() + "! Fortunately for you, the basic rules for playing craps are relatively simple.");
                 System.out.println();
                 System.out.println("1. A player rolls two six-sided dice and adds the numbers rolled together.");
                 System.out.println("2. On this first roll, a 7 or an 11 automatically wins, and a 2, 3, or 12 automatically loses, and play is over. If a 4, 5, 6, 8, 9, or 10 are rolled on this first roll, that number becomes the 'point.'");
@@ -48,10 +55,30 @@ public class Craps
             }
             System.out.print("Are you ready to play? Y/n: ");
             String ask = in.nextLine();
-            if (ask.equals("Y"))
+            if (ask.toUpperCase().equals("Y"))
             {
+                System.out.println();
+                System.out.println("Alright! LET'S PLAY CRAPS!");
+                System.out.println();
                 ready = true;
             }
+        }
+    }
+    public static void stats(Player player)
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Would you like to see some statistics? Y/n: ");
+        String stats = in.nextLine();
+        if (stats.toUpperCase().equals("Y"))
+        {
+            System.out.println();
+            System.out.println("That was some nice Crap gameplay " + player.getName() + "! Here are some statistics from your playing:");
+            System.out.println();
+            System.out.println("Number of games played: " + player.getgamesPlayed());
+            System.out.println("Number of games won: " + player.getgamesWon());
+            System.out.println("Number of games lost: " + player.getgamesLost());
+            System.out.println("Number of times the dice were rolled: " + player.getRolls());
+            System.out.println();
         }
     }
 }
