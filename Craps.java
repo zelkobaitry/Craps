@@ -23,24 +23,55 @@ public class Craps
             System.out.println("Press <Enter> to roll your first roll..."); // first roll
             String rolling = in.nextLine();
             int point = die.rollDie();
-            System.out.println("You rolled a " + die.getRoll() + ("!"));
-            if ((point == 7) || (die.getRoll() == 11)) // player won the game
+            System.out.println("You rolled a " + point + ("!"));
+            if (point == 7) // player won the game
             {
+                System.out.println("Congratulations! Since you rolled a 7 on your first roll, you automatically win!");
                 player.gameWon();
             }
-            else if (point == 2)
+            else if (point == 11) // player won the game
             {
-            
+                System.out.println("Congratulations! Since you rolled an 11 on your first roll, you automatically win!");
+                player.gameWon();
+            }
+            else if (point == 2) // player won the game
+            {
+                System.out.println("Uh-oh! Since you rolled a 2 on your first roll, you automatically lose!");
+                player.gameLost();
+            }
+            else if (point == 3) // player won the game
+            {
+                System.out.println("Uh-oh! Since you rolled a 3 on your first roll, you automatically lose!");
+                player.gameLost();
+            }
+            else if (point == 12) // player won the game
+            {
+                System.out.println("Uh-oh! Since you rolled a 12 on your first roll, you automatically lose!");
+                player.gameLost();
             }
             else // keep playing
             {
+                System.out.println("Since your first roll was not a 2, 3, 7, 11, or 12, you will now roll a second time");
                 System.out.println("Press <Enter> to roll your second roll...");
                 rolling = in.nextLine();
                 int roll2 = die.rollDie();
                 while(roll2 != point)
                 {
-                    // keep rolling
+                    if (roll2 == 7)
+                    {
+                        System.out.println("Uh-oh! Since you rolled a 7 on your second roll, you automatically lose!");
+                        player.gameLost();
+                        break;
+                    }
+                    else
+                    {
+                        System.out.println("Since your second roll, " + roll2 + ", is not the same as the point, " + point + ", and you didn't roll a 7, you are still playing.");
+                        System.out.println("Press <Enter> to roll your next roll...");
+                        rolling = in.nextLine();
+                        roll2 = die.rollDie();
+                    }
                 }
+                System.out.println("Congrats! Since you rolled a " + roll2 + ", and the point is " + point + ", you win!");
                 player.gameWon();
             }
             System.out.println("Would you like to keep playing?");
@@ -52,6 +83,7 @@ public class Craps
         }        
 
         stats(player);
+        System.out.println("Ok. Have a good rest of your day!");
     }
 
     public static void instructions(Player player)

@@ -31,7 +31,7 @@ public class Player
     public void setName()
     {
         Scanner in = new Scanner(System.in);
-        System.out.print("What is your name? ");
+        System.out.print("Hi there! What's your name? ");
         this.name = in.nextLine();
         while (name.equals(""))
         {
