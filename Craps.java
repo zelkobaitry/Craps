@@ -57,6 +57,7 @@ public class Craps
                 player.rolls();
                 rolling = in.nextLine();
                 int roll2 = die.rollDie();
+                System.out.println("You rolled a " + roll2 + ("!"));
                 while(roll2 != point)
                 {
                     if (roll2 == 7)
@@ -65,22 +66,23 @@ public class Craps
                         player.gameLost();
                         break;
                     }
-                    if (roll2 == point)
-                    {
-                        System.out.println("Congrats! Since you rolled a " + roll2 + ", and the point is " + point + ", you win!");
-                        player.gameWon();
-                        break;
-                    }
                     else
                     {
                         System.out.println("Since your second roll, " + roll2 + ", is not the same as the point, " + point + ", and you didn't roll a 7, you are still playing.");
                         System.out.println("Press <Enter> to roll your next roll...");
                         rolling = in.nextLine();
                         roll2 = die.rollDie();
+                        System.out.println("You rolled a " + roll2 + ("!"));
+                        player.rolls();
                     }
                 }
+                if (roll2 == point)
+                    {
+                        System.out.println("Congrats! Since you rolled a " + roll2 + ", and the point is " + point + ", you win!");
+                        player.gameWon();
+                    }
             }
-            System.out.println("Would you like to keep playing? (Y/n)");
+            System.out.print("Would you like to keep playing? (Y/n)");
             String stillplaying = in.nextLine();
             if (stillplaying.toLowerCase().equals("n"))
             {
@@ -89,7 +91,7 @@ public class Craps
         }        
 
         stats(player);
-        System.out.println("Ok. Have a good rest of your day!");
+        System.out.println("Have a good rest of your day!");
     }
 
     public static void instructions(Player player)

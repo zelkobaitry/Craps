@@ -93,7 +93,7 @@ public class Player
      */
     public int getgamesWon()
     {
-        return gamesPlayed;
+        return gamesWon;
     }
     
     /**
@@ -103,7 +103,7 @@ public class Player
      */
     public int getgamesLost()
     {
-        return gamesPlayed;
+        return gamesLost;
     }
     
     /**
