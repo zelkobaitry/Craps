@@ -1,6 +1,6 @@
 
 /**
- * This program simulates playin Craps
+ * This program simulates playing the game Craps
  *
  * @author Ziko Elkobaitry
  * @version 2022-01-11
