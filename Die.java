@@ -6,7 +6,9 @@
  */
 public class Die
 {
+    // instance variables
     private int roll;
+    
     /**
      * Constructor for objects of class Die
      */
@@ -17,6 +19,8 @@ public class Die
 
     /**
      * roll this program rolls the die
+     * 
+     * @ return the roll value
      */
     public int rollDie()
     {

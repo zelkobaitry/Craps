@@ -9,12 +9,16 @@
 import java.util.Scanner;
 public class Player
 {
+    // instance variables
     private String name;
     private int gamesPlayed;
     private int gamesWon;
     private int gamesLost;
     private int rolls;
 
+    /**
+     * Constructor for objects of class Player
+     */
     public Player()
     {
         this.name = null;
