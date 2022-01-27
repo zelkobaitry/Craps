@@ -144,3 +144,31 @@ public class Craps
         }
     }
 }
+
+/*
+
+COMMENTS FROM THE INSTRUCTOR:
+
+This is outstanding, Ziko. Just a wonderful tour de force of so many things, 
+including your inclusion of statistics to track a player's games over time.
+And you've got a Player class? You just threw that in there for kicks?!
+
+SO GOOD!
+
+One bit of advice I'll throw in here. Although we've practiced writing some
+static methods in our classes, especially at the beginning of the year when
+we were breaking up our code, we'll be doing that less as we get into true
+object-oriented programming. Static methods (aside from the main()) aren't 
+commonly used.
+
+What does that mean for you? In this program, rather than have a static
+method `stats` in the main(), you could have a `getStats` method in the
+Player class that return a summary of the player's games. Easy!
+
+Such good work here, Ziko. Looking forward to seeing what else you come
+up with this semester!
+
+SCORE: 55/50
+
+*/
+
